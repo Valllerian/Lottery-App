@@ -70,7 +70,7 @@ const Ticket = (props) => {
     ))
   );
 
-  return <div className="flex">{tickets ? listOfBalls : "No balls :("}</div>;
+  return <div className="flex px-5 py-9">{tickets ? listOfBalls : "No balls :("}</div>;
 };
 
 export default Ticket;

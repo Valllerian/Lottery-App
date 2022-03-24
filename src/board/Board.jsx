@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Ticket from "../ticket/Ticket";
+import WinningTicket from "../ticket/WinningTicket";
 // Importing Select Component in case I want to add Select for how many tickets I want to add;
 // import Select from 'react-select'
 
@@ -10,13 +11,33 @@ const Board = () => {
   //     { value: 2, label: 'Two Tickets' },
   //     { value: 3, label: 'Three Tickets' }
   //   ]
-
   const [tickets, setTickets] = useState([]);
   const [ballsAmount, setBallsAmout] = useState(6);
+  const [winningTicket, setWinningTicket] = useState([])
+ 
+
+  useEffect(() => {
+    let luckyArray = [];
+    for (let i = 0; i < ballsAmount; i++) {
+      let randomNum = Math.floor(Math.random() * 40);
+      luckyArray = [...luckyArray, randomNum];
+    }
+    
+    let winningNumber = { numbers: luckyArray };
+    // console.log(winningNumber)
+    if (tickets.length <= 1) {
+        setWinningTicket((winningTicket) => [...winningTicket, winningNumber]);
+        console.log(winningNumber)
+      } else {
+       console.log("Good Luck!")
+      }
+    console.log(winningTicket)
+  }, [])
+  
 
   const listOfTickets = tickets.map((ticket) => (
     <div className="grid place-items-center">
-      <div className="border border-sky-500 mx-3 my-3">
+      <div className="border border-black mx-3 my-3 bg-orange-200 rounded-lg">
         <Ticket
           randomNumbers={ticket.numbers}
           key={ticket.name}
@@ -35,15 +56,13 @@ const Board = () => {
       let randomNum = Math.floor(Math.random() * 40);
       randomArray = [...randomArray, randomNum];
     }
-    // console.log("HERE "+ randomArray)
     let ticket = { name: "Lucky ticket", numbers: randomArray };
-    // console.log(ticket)
+
     if (tickets.length <= 3) {
-      // console.log(ticket[0].numbers)
       setTickets((tickets) => [...tickets, ticket]);
-      // console.log(tickets.forEach((ticket) => console.log(ticket[0].numbers)))
     } else {
       alert("Too many tickets!");
+      window.location.reload();
     }
   };
 
@@ -51,6 +70,7 @@ const Board = () => {
     <div className="">
       <div>
         <button
+          className="ease inline-block cursor-pointer rounded-full bg-orange-400 px-8 py-3 mt-5 text-4xl text-white transition duration-500 hover:bg-gray-600 "
           onClick={function (e) {
             getTicket(e);
           }}
@@ -58,7 +78,26 @@ const Board = () => {
           Get a ticket!
         </button>
       </div>
-      <div className="">{tickets[0] ? listOfTickets : "Grab a ticket!"}</div>
+      <div className="my-6 ">
+        {tickets[0] ? (
+          listOfTickets
+        ) : (
+          <div className="my-10 font-bold text-gray-700 text-4xl">
+            Grab a ticket! ☝️
+          </div>
+        )}
+      </div>
+      <div>
+        <div>Winning numbers:</div>
+        <div className="grid place-items-center">
+          <div className="border border-black mx-3 my-3 bg-orange-200 rounded-lg">
+            <WinningTicket
+              winningNumbers={winningTicket}
+              ballsAmount={ballsAmount}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
