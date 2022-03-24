@@ -12,16 +12,17 @@ const Board = () => {
   //   ]
 
   const [tickets, setTickets] = useState([]);
+    const [ballsAmount, setBallsAmout] = useState(6)
 
   const listOfTickets = tickets.map((ticket) => (
     <div>
-      <Ticket key={tickets.indexOf(ticket)}/>
+      <Ticket key={tickets.indexOf(ticket)} ballsAmount={ballsAmount}/>
     </div>
   ));
 
   const getTicket = (e) => {
     e.preventDefault();
-    let anotherTicket = "lucky ticket";
+    let anotherTicket = "Lucky ticket";
     setTickets(tickets => [...tickets, anotherTicket])
   };
 
