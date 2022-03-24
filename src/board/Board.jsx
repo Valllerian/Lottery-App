@@ -16,7 +16,7 @@ const Board = () => {
 
   const listOfTickets = tickets.map((ticket) => (
     <div className="grid place-items-center">
-      <div className="">
+      <div className="border border-sky-500 mx-3 my-3">
         <Ticket
           key={tickets.indexOf(ticket)}
           ballsAmount={ballsAmount}
@@ -28,22 +28,15 @@ const Board = () => {
 
   const getTicket = (e) => {
     e.preventDefault();
-    let allNumbers = [];
-    let number1 = Math.floor(Math.random() * 40);
-    allNumbers = [...allNumbers, number1];
-    let number2 = Math.floor(Math.random() * 40);
-    allNumbers = [...allNumbers, number2];
-    let number3 = Math.floor(Math.random() * 40);
-    allNumbers = [...allNumbers, number3];
-    let number4 = Math.floor(Math.random() * 40);
-    allNumbers = [...allNumbers, number4];
-    let number5 = Math.floor(Math.random() * 40);
-    allNumbers = [...allNumbers, number5];
-    let number6 = Math.floor(Math.random() * 40);
-    allNumbers = [...allNumbers, number6];
- let ticket = [{name: 'Lucky ticker', numbers: allNumbers }]
+    const randomArray = [];
+    for (let i = 0; i < ballsAmount; i++) {
+      randomArray.push(Math.floor(Math.random() * 40));
+    }
+    let ticket = [{ name: "Lucky ticker", numbers: randomArray }];
     if (tickets.length <= 3) {
-      setTickets((tickets) => [...tickets, ticket]);
+        // console.log(ticket[0].numbers)
+            setTickets((tickets) => [...tickets, ticket]);
+        // console.log(tickets.forEach((ticket) => console.log(ticket[0].numbers)))
     } else {
       alert("Too many tickets!");
     }
