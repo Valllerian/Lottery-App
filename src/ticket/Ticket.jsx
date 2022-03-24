@@ -3,6 +3,7 @@ import Ball from "../ball/Ball";
 
 const Ticket = (props) => {
   let numberOfBalls = props.ballsAmount;
+  
 
   const renderBalls = () => {
     let allBalls = [];

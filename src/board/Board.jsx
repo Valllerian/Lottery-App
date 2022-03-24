@@ -25,7 +25,12 @@ const Board = () => {
   const getTicket = (e) => {
     e.preventDefault();
     let anotherTicket = "Lucky ticket";
-    setTickets((tickets) => [...tickets, anotherTicket]);
+    if(tickets.length <= 3 ){
+        setTickets((tickets) => [...tickets, anotherTicket]);
+    } else {
+        alert("Too many tickets!")
+    }
+    
   };
 
   return (
