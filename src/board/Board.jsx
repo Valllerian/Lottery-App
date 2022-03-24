@@ -13,26 +13,7 @@ const Board = () => {
   //   ]
   const [tickets, setTickets] = useState([]);
   const [ballsAmount, setBallsAmout] = useState(6);
-  const [winningTicket, setWinningTicket] = useState([])
- 
 
-  useEffect(() => {
-    let luckyArray = [];
-    for (let i = 0; i < ballsAmount; i++) {
-      let randomNum = Math.floor(Math.random() * 40);
-      luckyArray = [...luckyArray, randomNum];
-    }
-    
-    let winningNumber = { numbers: luckyArray };
-    // console.log(winningNumber)
-    if (tickets.length <= 1) {
-        setWinningTicket((winningTicket) => [...winningTicket, winningNumber]);
-        console.log(winningNumber)
-      } else {
-       console.log("Good Luck!")
-      }
-    console.log(winningTicket)
-  }, [])
   
 
   const listOfTickets = tickets.map((ticket) => (
@@ -91,9 +72,7 @@ const Board = () => {
         <div>Winning numbers:</div>
         <div className="grid place-items-center">
           <div className="border border-black mx-3 my-3 bg-orange-200 rounded-lg">
-            <WinningTicket
-              winningNumbers={winningTicket}
-              ballsAmount={ballsAmount}
+            <WinningTicket ballsAmount={ballsAmount}
             />
           </div>
         </div>
