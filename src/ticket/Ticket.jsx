@@ -3,12 +3,13 @@ import Ball from "../ball/Ball";
 
 const Ticket = (props) => {
   let numberOfBalls = props.ballsAmount;
-  
-
+    let allNumbers = props.numbers[0][0].numbers
   const renderBalls = () => {
     let allBalls = [];
+    console.log(props.numbers)
     for (let i = 0; i < numberOfBalls; i++) {
-      let number = Math.floor(Math.random() * 40);
+    
+      let number = allNumbers[i];
       let ball = (
         <div key={i}>
           {" "}
