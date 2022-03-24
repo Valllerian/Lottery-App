@@ -61,6 +61,9 @@ const Ticket = (props) => {
     }
   };
 
+
+  
+
   const listOfBalls = tickets?.map((ticket) =>
     ticket.numbers.map((number) => (
       <div>

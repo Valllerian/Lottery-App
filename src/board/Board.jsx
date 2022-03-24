@@ -3,7 +3,7 @@ import Ticket from "../ticket/Ticket";
 import WinningTicket from "../ticket/WinningTicket";
 // Importing Select Component in case I want to add Select for how many tickets I want to add;
 // import Select from 'react-select'
-
+import './board.css'
 const Board = () => {
   // Selecting from options array of objects:
   // const options = [
@@ -14,14 +14,12 @@ const Board = () => {
   const [tickets, setTickets] = useState([]);
   const [ballsAmount, setBallsAmout] = useState(6);
 
-  
-
   const listOfTickets = tickets.map((ticket) => (
     <div className="grid place-items-center">
       <div className="border border-black mx-3 my-3 bg-orange-200 rounded-lg">
         <Ticket
           randomNumbers={ticket.numbers}
-          key={ticket.name}
+          key={ballsAmount}
           ballsAmount={ballsAmount}
           numbers={tickets}
           name={ticket.name}
@@ -48,7 +46,7 @@ const Board = () => {
   };
 
   return (
-    <div className="">
+    <div className="main_div ">
       <div>
         <button
           className="ease inline-block cursor-pointer rounded-full bg-orange-400 px-8 py-3 mt-5 text-4xl text-white transition duration-500 hover:bg-gray-600 "
@@ -68,12 +66,13 @@ const Board = () => {
           </div>
         )}
       </div>
-      <div>
-        <div>Winning numbers:</div>
-        <div className="grid place-items-center">
-          <div className="border border-black mx-3 my-3 bg-orange-200 rounded-lg">
-            <WinningTicket ballsAmount={ballsAmount}
-            />
+      <div className="sub_div  ">
+        <div className="my-10 font-bold text-gray-700 text-4xl">
+          Winning numbers:
+        </div>
+        <div className=" ">
+          <div className="border border-black  my-3 bg-orange-200 rounded-lg ">
+            <WinningTicket ballsAmount={ballsAmount} />
           </div>
         </div>
       </div>
