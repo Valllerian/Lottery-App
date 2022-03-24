@@ -12,18 +12,27 @@ const Board = () => {
   //   ]
 
   const [tickets, setTickets] = useState([]);
-    const [ballsAmount, setBallsAmout] = useState(6)
+  const [ballsAmount, setBallsAmout] = useState(6);
+  const [randomBalls, setRandomBalls] = useState([]);
 
   const listOfTickets = tickets.map((ticket) => (
-    <div>
-      <Ticket key={tickets.indexOf(ticket)} ballsAmount={ballsAmount}/>
+    <div className="">
+      <div className="">
+        <div className="">
+          <Ticket
+            key={tickets.indexOf(ticket)}
+            ballsAmount={ballsAmount}
+            className="inline-block"
+          />
+        </div>
+      </div>
     </div>
   ));
 
   const getTicket = (e) => {
     e.preventDefault();
     let anotherTicket = "Lucky ticket";
-    setTickets(tickets => [...tickets, anotherTicket])
+    setTickets((tickets) => [...tickets, anotherTicket]);
   };
 
   return (

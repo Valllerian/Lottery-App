@@ -7,10 +7,11 @@ const Ticket = (props) => {
   const renderBalls = () => {
     let allBalls = [];
     for (let i = 0; i < numberOfBalls; i++) {
+    let number = Math.floor(Math.random() * 40)
       let ball = (
         <div key={i}>
           {" "}
-          <Ball />
+          <Ball number={number} />
         </div>
       );
       allBalls = [...allBalls, ball];

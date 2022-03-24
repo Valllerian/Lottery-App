@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-const Ball = () => {
+const Ball = (props) => {
+ let number = props.number
+
+ 
   return (
-    <div>Ball</div>
+    <div className='flex-nowrap'>{number}</div>
   )
 }
 
