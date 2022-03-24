@@ -18,11 +18,11 @@ const Board = () => {
     <div className="grid place-items-center">
       <div className="border border-sky-500 mx-3 my-3">
         <Ticket
-          randomNumbers ={ticket.numbers}
-          key={tickets.indexOf(ticket)}
+          randomNumbers={ticket.numbers}
+          key={ticket.name}
           ballsAmount={ballsAmount}
           numbers={tickets}
-          name = {ticket.name}
+          name={ticket.name}
         />
       </div>
     </div>
@@ -32,16 +32,16 @@ const Board = () => {
     e.preventDefault();
     let randomArray = [];
     for (let i = 0; i < ballsAmount; i++) {
-        let randomNum = Math.floor(Math.random() * 40)
-        randomArray = [...randomArray, randomNum];
+      let randomNum = Math.floor(Math.random() * 40);
+      randomArray = [...randomArray, randomNum];
     }
     // console.log("HERE "+ randomArray)
     let ticket = { name: "Lucky ticket", numbers: randomArray };
     // console.log(ticket)
     if (tickets.length <= 3) {
-        // console.log(ticket[0].numbers)
-            setTickets((tickets) => [...tickets, ticket]);
-        // console.log(tickets.forEach((ticket) => console.log(ticket[0].numbers)))
+      // console.log(ticket[0].numbers)
+      setTickets((tickets) => [...tickets, ticket]);
+      // console.log(tickets.forEach((ticket) => console.log(ticket[0].numbers)))
     } else {
       alert("Too many tickets!");
     }

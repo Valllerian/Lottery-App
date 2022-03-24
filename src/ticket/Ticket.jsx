@@ -13,7 +13,6 @@ const Ticket = (props) => {
   let nums = props.randomNumbers;
 
   const renderBalls = () => {
-  
     if (allTickets.length == 1) {
       let number;
       let allNumbers = [];
@@ -28,8 +27,8 @@ const Ticket = (props) => {
     }
 
     if (allTickets.length == 2) {
-        let number;
-        let allNumbers = [];
+      let number;
+      let allNumbers = [];
       for (let i = 0; i < numberOfBalls; i++) {
         number = nums[i];
         allNumbers.push(number);
@@ -39,8 +38,8 @@ const Ticket = (props) => {
       setTickets((tickets) => [...tickets, results]);
     }
     if (allTickets.length == 3) {
-        let number;
-        let allNumbers = [];
+      let number;
+      let allNumbers = [];
       for (let i = 0; i < numberOfBalls; i++) {
         number = nums[i];
         allNumbers.push(number);
@@ -50,8 +49,8 @@ const Ticket = (props) => {
       setTickets((tickets) => [...tickets, results]);
     }
     if (allTickets.length == 4) {
-        let number;
-        let allNumbers = [];
+      let number;
+      let allNumbers = [];
       for (let i = 0; i < numberOfBalls; i++) {
         number = nums[i];
         allNumbers.push(number);
@@ -62,13 +61,11 @@ const Ticket = (props) => {
     }
   };
 
-
-
   const listOfBalls = tickets?.map((ticket) =>
     ticket.numbers.map((number) => (
       <div>
         {" "}
-        <Ball number={number} />
+        <Ball number={number} key={number} />
       </div>
     ))
   );
