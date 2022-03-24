@@ -18,9 +18,11 @@ const Board = () => {
     <div className="grid place-items-center">
       <div className="border border-sky-500 mx-3 my-3">
         <Ticket
+          randomNumbers ={ticket.numbers}
           key={tickets.indexOf(ticket)}
           ballsAmount={ballsAmount}
           numbers={tickets}
+          name = {ticket.name}
         />
       </div>
     </div>
@@ -28,11 +30,14 @@ const Board = () => {
 
   const getTicket = (e) => {
     e.preventDefault();
-    const randomArray = [];
+    let randomArray = [];
     for (let i = 0; i < ballsAmount; i++) {
-      randomArray.push(Math.floor(Math.random() * 40));
+        let randomNum = Math.floor(Math.random() * 40)
+        randomArray = [...randomArray, randomNum];
     }
-    let ticket = [{ name: "Lucky ticker", numbers: randomArray }];
+    // console.log("HERE "+ randomArray)
+    let ticket = { name: "Lucky ticket", numbers: randomArray };
+    // console.log(ticket)
     if (tickets.length <= 3) {
         // console.log(ticket[0].numbers)
             setTickets((tickets) => [...tickets, ticket]);
