@@ -1,12 +1,9 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 
 const Ball = (props) => {
- let number = props.number
+  let number = props.number;
 
- 
-  return (
-    <div className='flex-nowrap'>{number}</div>
-  )
-}
+  return <div className="">{number}</div>;
+};
 
-export default Ball
+export default Ball;

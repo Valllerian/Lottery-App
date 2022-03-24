@@ -13,18 +13,11 @@ const Board = () => {
 
   const [tickets, setTickets] = useState([]);
   const [ballsAmount, setBallsAmout] = useState(6);
-  const [randomBalls, setRandomBalls] = useState([]);
 
   const listOfTickets = tickets.map((ticket) => (
-    <div className="">
+    <div className="grid place-items-center">
       <div className="">
-        <div className="">
-          <Ticket
-            key={tickets.indexOf(ticket)}
-            ballsAmount={ballsAmount}
-            className="inline-block"
-          />
-        </div>
+        <Ticket key={tickets.indexOf(ticket)} ballsAmount={ballsAmount} />
       </div>
     </div>
   ));
@@ -36,8 +29,10 @@ const Board = () => {
   };
 
   return (
-    <div>
-      <div>{tickets[0] ? listOfTickets : "Grab a ticket below!"}</div>
+    <div className="">
+      <div className="">
+        {tickets[0] ? listOfTickets : "Grab a ticket below!"}
+      </div>
       <div>
         <button onClick={getTicket}>Get a ticket!</button>
       </div>
