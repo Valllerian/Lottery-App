@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import Ticket from "../ticket/Ticket";
 import WinningTicket from "../ticket/WinningTicket";
 // Importing Select Component in case I want to add Select for how many tickets I want to add;
-// import Select from 'react-select'
+import Select from 'react-select'
 import "./board.css";
+
 const Board = () => {
   // Selecting from options array of objects:
-  // const options = [
-  //     { value: 1, label: 'One Ticket' },
-  //     { value: 2, label: 'Two Tickets' },
-  //     { value: 3, label: 'Three Tickets' }
-  //   ]
+
+  const options = [
+      { value: 4, label: '4 balls' },
+      { value: 6, label: '6 balls' },
+      { value: 8, label: '8 balls' }
+    ]
+
   const [tickets, setTickets] = useState([]);
   const [ballsAmount, setBallsAmout] = useState(6);
 
@@ -45,9 +48,16 @@ const Board = () => {
     }
   };
 
+  const handleChange = (e) => {
+      
+      console.log(e.target)
+  
+  }
+
   return (
     <div className="main_div ">
       <div>
+      <Select options={options} onChange={event => {setBallsAmout(event.value)}} />
         <button
           className="ease inline-block cursor-pointer rounded-full bg-orange-400 px-8 py-3 mt-5 text-4xl text-white transition duration-500 hover:bg-gray-600 "
           onClick={function (e) {
