@@ -28,8 +28,22 @@ https://lottery-app-orcin.vercel.app/
 Main page of the app.
 
 <br>
-<img alt="Main page" src="./assets/image01.gif" />
+<img alt="Main page" src="./assets/image01.jpg" />
 <br>
+
+1 ticked is pulled with no winning numbers.
+
+<br>
+<img alt="Main page" src="./assets/image02.jpg" />
+<br>
+
+
+3 tickets are pulled (man) with 1 winning number.
+
+<br>
+<img alt="Main page" src="./assets/image03.jpg" />
+<br>
+
 
 
 
