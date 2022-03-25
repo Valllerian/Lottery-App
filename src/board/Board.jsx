@@ -15,11 +15,11 @@ const Board = () => {
 
   const [tickets, setTickets] = useState([]);
   const [ballsAmount, setBallsAmout] = useState(6);
-  const [newGame, setNewGame] = useState(true)
+  const [newGame, setNewGame] = useState(true);
 
   const listOfTickets = tickets.map((ticket) => (
     <div className="grid place-items-center">
-      <div className="border border-black mx-3 my-3 bg-orange-200 rounded-lg">
+      <div className="border border-black mx-3 my-3 bg-orange-200 rounded-lg shadow-xl">
         <Ticket
           randomNumbers={ticket.numbers}
           key={ballsAmount}
@@ -33,58 +33,60 @@ const Board = () => {
 
   const getTicket = (e) => {
     e.preventDefault();
-    if(newGame){
-        alert("Select amount of balls first!")
-    }else{
-        let randomArray = [];
-        for (let i = 0; i < ballsAmount; i++) {
-          let randomNum = Math.floor(Math.random() * 40);
-          randomArray = [...randomArray, randomNum];
-        }
-        let ticket = { name: "Lucky ticket", numbers: randomArray };
-    
-        if (tickets.length <= 2) {
-          setTickets((tickets) => [...tickets, ticket]);
-        } else {
-          alert("Too many tickets!");
-          window.location.reload();
-        }
+    if (newGame) {
+      alert("Select amount of balls first!");
+    } else {
+      let randomArray = [];
+      for (let i = 0; i < ballsAmount; i++) {
+        let randomNum = Math.floor(Math.random() * 40);
+        randomArray = [...randomArray, randomNum];
+      }
+      let ticket = { name: "Lucky ticket", numbers: randomArray };
+
+      if (tickets.length <= 2) {
+        setTickets((tickets) => [...tickets, ticket]);
+      } else {
+        alert("Too many tickets!");
+        window.location.reload();
+      }
     }
-   
   };
 
   const handleChange = (event) => {
-    setBallsAmout(event.value)
+    setBallsAmout(event.value);
     setNewGame(false);
-  }
+  };
 
   return (
-    <div className="grid place-items-center">
+    <div className="grid place-items-center px-6 my-4 border border-black rounded-3xl bg-gray-100 shadow-2xl">
       <div className="">
         <div className="my-10 font-bold text-gray-700 text-4xl">
           Winning numbers:
         </div>
         <div className=" ">
-          <div className="border border-black  my-3 bg-orange-200 rounded-lg ">
+          <div className="border border-black  my-1 bg-orange-200 rounded-lg shadow-xl ">
             <WinningTicket ballsAmount={ballsAmount} />
           </div>
         </div>
       </div>
       <div>
-        <div className="my-10 font-bold text-gray-700 text-4xl">
+        <div className="my-5 font-bold text-gray-700 text-4xl">
           {" "}
           Select amount of balls:
         </div>
         <Select
-          className="my-4"
+          className="my-4 shadow-xl"
           options={options}
           onChange={(event) => {
-            {newGame ?  handleChange(event) : alert("Start new game to changle ball amount!")}
-    
+            {
+              newGame
+                ? handleChange(event)
+                : alert("Start a new game to changle ball amount!");
+            }
           }}
         />
         <button
-          className="ease inline-block cursor-pointer rounded-full bg-orange-400 px-8 py-3 mt-5 text-4xl text-white transition duration-500 hover:bg-gray-600 "
+          className="ease inline-block cursor-pointer rounded-full bg-orange-400 px-8 py-3 mt-5 text-4xl text-white transition duration-500 hover:bg-gray-600 shadow-xl "
           onClick={function (e) {
             getTicket(e);
           }}
