@@ -15,6 +15,7 @@ const Board = () => {
 
   const [tickets, setTickets] = useState([]);
   const [ballsAmount, setBallsAmout] = useState(6);
+  const [newGame, setNewGame] = useState(true)
 
   const listOfTickets = tickets.map((ticket) => (
     <div className="grid place-items-center">
@@ -32,24 +33,30 @@ const Board = () => {
 
   const getTicket = (e) => {
     e.preventDefault();
-    let randomArray = [];
-    for (let i = 0; i < ballsAmount; i++) {
-      let randomNum = Math.floor(Math.random() * 40);
-      randomArray = [...randomArray, randomNum];
+    if(newGame){
+        alert("Select amount of balls first!")
+    }else{
+        let randomArray = [];
+        for (let i = 0; i < ballsAmount; i++) {
+          let randomNum = Math.floor(Math.random() * 40);
+          randomArray = [...randomArray, randomNum];
+        }
+        let ticket = { name: "Lucky ticket", numbers: randomArray };
+    
+        if (tickets.length <= 2) {
+          setTickets((tickets) => [...tickets, ticket]);
+        } else {
+          alert("Too many tickets!");
+          window.location.reload();
+        }
     }
-    let ticket = { name: "Lucky ticket", numbers: randomArray };
-
-    if (tickets.length <= 3) {
-      setTickets((tickets) => [...tickets, ticket]);
-    } else {
-      alert("Too many tickets!");
-      window.location.reload();
-    }
+   
   };
 
-  const handleChange = (e) => {
-    console.log(e.target);
-  };
+  const handleChange = (event) => {
+    setBallsAmout(event.value)
+    setNewGame(false);
+  }
 
   return (
     <div className="grid place-items-center">
@@ -72,7 +79,8 @@ const Board = () => {
           className="my-4"
           options={options}
           onChange={(event) => {
-            setBallsAmout(event.value);
+            {newGame ?  handleChange(event) : alert("Start new game to changle ball amount!")}
+    
           }}
         />
         <button
