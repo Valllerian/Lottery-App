@@ -3,7 +3,7 @@ import Ticket from "../ticket/Ticket";
 import WinningTicket from "../ticket/WinningTicket";
 // Importing Select Component in case I want to add Select for how many tickets I want to add;
 // import Select from 'react-select'
-import './board.css'
+import "./board.css";
 const Board = () => {
   // Selecting from options array of objects:
   // const options = [
