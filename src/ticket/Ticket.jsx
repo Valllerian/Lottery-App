@@ -13,56 +13,17 @@ const Ticket = (props) => {
   let nums = props.randomNumbers;
 
   const renderBalls = () => {
-    if (allTickets.length == 1) {
-      let number;
-      let allNumbers = [];
-      for (let i = 0; i < numberOfBalls; i++) {
-        number = nums[i];
-        // console.log(number)
-        allNumbers.push(number);
-      }
-      let results = { numbers: allNumbers };
-      setTickets((tickets) => [...tickets, results]);
-      //   console.log(ticketNumbers)
+    let number;
+    let allNumbers = [];
+    for (let i = 0; i < numberOfBalls; i++) {
+      number = nums[i];
+      // console.log(number)
+      allNumbers.push(number);
     }
-
-    if (allTickets.length == 2) {
-      let number;
-      let allNumbers = [];
-      for (let i = 0; i < numberOfBalls; i++) {
-        number = nums[i];
-        allNumbers.push(number);
-      }
-      let results = { numbers: allNumbers };
-      setTickets([]);
-      setTickets((tickets) => [...tickets, results]);
-    }
-    if (allTickets.length == 3) {
-      let number;
-      let allNumbers = [];
-      for (let i = 0; i < numberOfBalls; i++) {
-        number = nums[i];
-        allNumbers.push(number);
-      }
-      let results = { numbers: allNumbers };
-      setTickets([]);
-      setTickets((tickets) => [...tickets, results]);
-    }
-    if (allTickets.length == 4) {
-      let number;
-      let allNumbers = [];
-      for (let i = 0; i < numberOfBalls; i++) {
-        number = nums[i];
-        allNumbers.push(number);
-      }
-      let results = { numbers: allNumbers };
-      setTickets([]);
-      setTickets((tickets) => [...tickets, results]);
-    }
+    let results = { numbers: allNumbers };
+    setTickets((tickets) => [...tickets, results]);
+    //   console.log(ticketNumbers)
   };
-
-
-  
 
   const listOfBalls = tickets?.map((ticket) =>
     ticket.numbers.map((number) => (
@@ -73,7 +34,11 @@ const Ticket = (props) => {
     ))
   );
 
-  return <div className="flex px-5 py-9">{tickets ? listOfBalls : "No balls :("}</div>;
+  return (
+    <div className="flex px-5 py-9">
+      {tickets ? listOfBalls : "No balls :("}
+    </div>
+  );
 };
 
 export default Ticket;
