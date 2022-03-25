@@ -58,7 +58,7 @@ const Board = () => {
   };
 
   return (
-    <div className="grid place-items-center px-6 my-4 border border-black rounded-3xl bg-gray-100 shadow-2xl shadow-black-500/50">
+    <div className="grid place-items-center px-6 my-4 border border-black rounded-3xl bg-gray-100 shadow-2xl shadow-black-800/50">
       <div className="">
         <div className="my-10 font-bold text-gray-700 text-4xl">
           Winning numbers:
