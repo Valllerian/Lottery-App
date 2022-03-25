@@ -9,7 +9,7 @@ const Ticket = (props) => {
   }, []);
 
   let numberOfBalls = props.ballsAmount;
-  let allTickets = props.numbers;
+ 
   let nums = props.randomNumbers;
 
   const renderBalls = () => {

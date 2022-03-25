@@ -52,9 +52,24 @@ const Board = () => {
   };
 
   return (
-    <div className="main_div ">
+    <div className="grid place-items-center">
+      <div className="">
+        <div className="my-10 font-bold text-gray-700 text-4xl">
+          Winning numbers:
+        </div>
+        <div className=" ">
+          <div className="border border-black  my-3 bg-orange-200 rounded-lg ">
+            <WinningTicket ballsAmount={ballsAmount} />
+          </div>
+        </div>
+      </div>
       <div>
+        <div className="my-10 font-bold text-gray-700 text-4xl">
+          {" "}
+          Select amount of balls:
+        </div>
         <Select
+          className="my-4"
           options={options}
           onChange={(event) => {
             setBallsAmout(event.value);
@@ -77,16 +92,6 @@ const Board = () => {
             Grab a ticket! ☝️
           </div>
         )}
-      </div>
-      <div className="sub_div  ">
-        <div className="my-10 font-bold text-gray-700 text-4xl">
-          Winning numbers:
-        </div>
-        <div className=" ">
-          <div className="border border-black  my-3 bg-orange-200 rounded-lg ">
-            <WinningTicket ballsAmount={ballsAmount} />
-          </div>
-        </div>
       </div>
     </div>
   );
