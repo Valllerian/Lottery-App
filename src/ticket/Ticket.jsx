@@ -29,7 +29,7 @@ const Ticket = (props) => {
     ticket.numbers.map((number) => (
       <div>
         {" "}
-        <Ball number={number} key={number} />
+        <Ball number={number} key={number} className="shadow-inner-2xl"/>
       </div>
     ))
   );

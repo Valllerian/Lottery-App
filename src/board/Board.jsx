@@ -19,7 +19,7 @@ const Board = () => {
 
   const listOfTickets = tickets.map((ticket) => (
     <div className="grid place-items-center">
-      <div className="border border-black mx-3 my-3 bg-orange-200 rounded-lg shadow-xl">
+      <div className="border border-black mx-3 my-3 bg-orange-200 rounded-lg shadow-xl ">
         <Ticket
           randomNumbers={ticket.numbers}
           key={ballsAmount}
@@ -58,7 +58,7 @@ const Board = () => {
   };
 
   return (
-    <div className="grid place-items-center px-6 my-4 border border-black rounded-3xl bg-gray-100 shadow-2xl">
+    <div className="grid place-items-center px-6 my-4 border border-black rounded-3xl bg-gray-100 shadow-2xl shadow-black-500/50">
       <div className="">
         <div className="my-10 font-bold text-gray-700 text-4xl">
           Winning numbers:
