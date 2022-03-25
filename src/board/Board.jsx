@@ -98,7 +98,7 @@ const Board = () => {
         {tickets[0] ? (
           listOfTickets
         ) : (
-          <div className="my-10 font-bold text-gray-700 text-4xl">
+          <div className="my-6 font-bold text-gray-700 text-4xl">
             Grab a ticket! ☝️
           </div>
         )}
