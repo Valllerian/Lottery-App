@@ -14,13 +14,15 @@ const Board = () => {
   ];
 
   const [tickets, setTickets] = useState([]);
-  const [ballsAmount, setBallsAmout] = useState(6);
+  const [ballsAmount, setBallsAmout] = useState(0);
   const [newGame, setNewGame] = useState(true);
+  const [winningNumbers, setWinningNumbers] = useState([]);
 
   const listOfTickets = tickets.map((ticket) => (
     <div className="grid place-items-center">
       <div className="border border-black mx-3 my-3 bg-orange-200 rounded-lg shadow-xl ">
         <Ticket
+        winningNumbers={winningNumbers}
           randomNumbers={ticket.numbers}
           key={ballsAmount}
           ballsAmount={ballsAmount}
@@ -33,6 +35,15 @@ const Board = () => {
 
   const getTicket = (e) => {
     e.preventDefault();
+    let winningArray = [];
+    for (let i = 0; i < ballsAmount; i++) {
+      let winnerNumber =
+        document.getElementsByClassName("winner")[0].children[i].children[0]
+          .children[0].textContent;
+      winningArray = [...winningArray, winnerNumber];
+    }
+    setWinningNumbers((winningNumbers) => [...winningNumbers, winningArray]);
+
     if (newGame) {
       alert("Select amount of balls first!");
     } else {
@@ -59,16 +70,19 @@ const Board = () => {
 
   return (
     <div className="grid place-items-center px-6 my-4 border border-black rounded-3xl bg-gray-100 shadow-2xl shadow-black-800/50">
-      <div className="">
-        <div className="my-10 font-bold text-gray-700 text-4xl">
-          Winning numbers:
-        </div>
-        <div className=" ">
-          <div className="border border-black  my-1 bg-orange-200 rounded-lg shadow-xl ">
-            <WinningTicket ballsAmount={ballsAmount} />
+      {ballsAmount != 0 ? (
+        <div className="">
+          <div className="my-10 font-bold text-gray-700 text-4xl">
+            Winning numbers:
+          </div>
+          <div className=" ">
+            <div className="border border-black  my-1 bg-orange-200 rounded-lg shadow-xl ">
+              <WinningTicket ballsAmount={ballsAmount} />
+            </div>
           </div>
         </div>
-      </div>
+      ) : null}
+
       <div>
         <div className="my-5 font-bold text-gray-700 text-4xl">
           {" "}
@@ -86,7 +100,7 @@ const Board = () => {
           }}
         />
         <button
-          className="ease inline-block cursor-pointer rounded-full bg-orange-400 px-8 py-3 mt-5 text-4xl text-white transition duration-500 hover:bg-gray-600 shadow-xl "
+          className="ease inline-block cursor-pointer rounded-full bg-orange-400 px-8 py-2 mt-3 text-4xl text-white transition duration-500 hover:bg-gray-600 shadow-xl "
           onClick={function (e) {
             getTicket(e);
           }}
@@ -98,7 +112,7 @@ const Board = () => {
         {tickets[0] ? (
           listOfTickets
         ) : (
-          <div className="my-6 font-bold text-gray-700 text-4xl">
+          <div className="my-5 font-bold text-gray-700 text-4xl">
             Grab a ticket! ☝️
           </div>
         )}

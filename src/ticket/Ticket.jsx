@@ -3,13 +3,13 @@ import Ball from "../ball/Ball";
 
 const Ticket = (props) => {
   const [tickets, setTickets] = useState([]);
-
+  let winningNumbers = props.winningNumbers;
   useEffect(() => {
     renderBalls();
   }, []);
 
   let numberOfBalls = props.ballsAmount;
- 
+
   let nums = props.randomNumbers;
 
   const renderBalls = () => {
@@ -29,7 +29,12 @@ const Ticket = (props) => {
     ticket.numbers.map((number) => (
       <div>
         {" "}
-        <Ball number={number} key={number} className="shadow-inner-2xl"/>
+        <Ball
+          number={number}
+          key={number}
+          winningNumbers={winningNumbers}
+          className=""
+        />
       </div>
     ))
   );

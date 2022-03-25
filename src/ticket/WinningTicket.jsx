@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Ball from "../ball/Ball";
+import WBall from "../wball/WBall";
 
 const WinningTicket = (props) => {
   const [ticket, setTickets] = useState([]);
@@ -27,13 +27,15 @@ const WinningTicket = (props) => {
     ticket.numbers.map((number) => (
       <div>
         {" "}
-        <Ball number={number} key={number} />
+        <WBall number={number} key={number} />
       </div>
     ))
   );
 
   return (
-    <div className="flex px-5 py-9">{ticket ? listOfBalls : "No balls :("}</div>
+    <div className="flex px-5 py-9 winner ">
+      {ticket ? listOfBalls : "No balls :("}
+    </div>
   );
 };
 

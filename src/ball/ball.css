@@ -1,0 +1,16 @@
+/* .isWinner {
+    color: black;
+    text-shadow:2px 2px 3px green;
+}
+
+.looser {
+    color: black;
+    text-shadow: 2px 2px 3px #FF0000;
+} */
+
+.winnerBall{
+    background-color: green;
+}
+.looserBall{
+    background-color: red;
+}
