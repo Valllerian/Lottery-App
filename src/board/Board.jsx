@@ -22,7 +22,7 @@ const Board = () => {
     <div className="grid place-items-center">
       <div className="border border-black mx-3 my-3 bg-orange-200 rounded-lg shadow-xl ">
         <Ticket
-        winningNumbers={winningNumbers}
+          winningNumbers={winningNumbers}
           randomNumbers={ticket.numbers}
           key={ballsAmount}
           ballsAmount={ballsAmount}

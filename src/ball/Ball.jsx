@@ -15,8 +15,13 @@ const Ball = (props) => {
     }
   };
   return (
-    <div className={"mx-3 w-11 h-11 font-bold  rounded-full flex items-center justify-center font-mono border-black border shadow-inner " + (numWinner() ? "winnerBall" : "looserBall") }>
-      <div >{number}</div>
+    <div
+      className={
+        "mx-3 w-11 h-11 font-bold  rounded-full flex items-center justify-center font-mono border-black border shadow-inner " +
+        (numWinner() ? "winnerBall" : "looserBall")
+      }
+    >
+      <div>{number}</div>
     </div>
   );
 };
